@@ -1,0 +1,30 @@
+.site-bg-layer {
+  position: fixed;
+  inset: 0;
+  left: -50%;
+  right: -50%;
+  opacity: 0.5;
+  z-index: -1;
+  background-image: linear-gradient(
+    -35deg,
+    var(--gradient-a) 40%,
+    var(--gradient-b) 30%
+  );
+  animation: site-slide 24s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.site-bg-layer2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 16s;
+}
+.site-bg-layer3 {
+  animation-duration: 20s;
+}
+@keyframes site-slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}

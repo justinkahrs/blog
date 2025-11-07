@@ -1,0 +1,106 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Header from "../../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import BackgroundAnimation from "../../components/BackgroundAnimation.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const [latest, ...older] = posts;
+const latestExcerpt = latest?.data?.description ?? "";
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="min-h-screen text-base-content">
+    <BackgroundAnimation />
+    <Header />
+    <main class="mx-auto max-w-5xl px-4 md:px-6 lg:px-8 py-10">
+      <section class="mb-8">
+        <div class="flex items-end justify-between gap-4">
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+            Projects
+          </h1>
+        </div>
+        <p class="mt-2 opacity-70">Recent work, experiments, and write ups.</p>
+      </section>
+      <section class="mb-10">
+        <a href={`/projects/${latest.id}/`} class="block group">
+          <div class="card bg-base-100 shadow-xl overflow-hidden">
+            {
+              latest.data.heroImage && (
+                <figure class="aspect-[21/9] overflow-hidden">
+                  <Image
+                    width={1440}
+                    height={616}
+                    src={latest.data.heroImage}
+                    alt=""
+                    class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.01]"
+                  />
+                </figure>
+              )
+            }
+            <div class="card-body gap-4">
+              <h2 class="card-title text-2xl md:text-3xl">
+                {latest.data.title}
+              </h2>
+              <p class="text-sm opacity-70">
+                <FormattedDate date={latest.data.pubDate} />
+              </p>
+              {
+                latestExcerpt && (
+                  <p class="line-clamp-3 text-base-content/80">
+                    {latestExcerpt}
+                  </p>
+                )
+              }
+              <div class="card-actions">
+                <span class="btn btn-primary">Read project</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </section>
+      <section>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-6">
+          {
+            older.map((post) => (
+              <li class="list-none">
+                <a href={`/projects/${post.id}/`} class="block group">
+                  <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow duration-200 h-full">
+                    {post.data.heroImage && (
+                      <figure class="aspect-[2/1] overflow-hidden">
+                        <Image
+                          width={720}
+                          height={360}
+                          src={post.data.heroImage}
+                          alt=""
+                          class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02] rounded-t-box"
+                        />
+                      </figure>
+                    )}
+                    <div class="card-body">
+                      <h2 class="card-title line-clamp-2">{post.data.title}</h2>
+                      <p class="text-sm opacity-70">
+                        <FormattedDate date={post.data.pubDate} />
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
