@@ -2,7 +2,7 @@
 title: "RCS Tech Demo"
 description: ": Where we're going, we won't need apps"
 pubDate: "Apr 18 2025"
-heroImage: "../../assets/blog-placeholder-2.png"
+heroImage: "../../assets/amastay.png"
 ---
 
 # Amastay Demo Deep Dive
