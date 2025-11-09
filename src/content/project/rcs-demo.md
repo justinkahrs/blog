@@ -1,6 +1,6 @@
 ---
-title: "RCS Tech Demo"
-description: ": Where we're going, we won't need apps"
+title: "RCS Tech Demo for Amastay AI"
+description: "Where we're going, we won't need apps"
 pubDate: "Apr 18 2025"
 heroImage: "../../assets/amastay.png"
 github: "https://github.com/justinkahrs/on-device-demo"

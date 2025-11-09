@@ -50,6 +50,9 @@ const {
               >
                 {title}
               </h1>
+              <h2 class="card-title text-xl font-normal tracking-tight">
+                {description}
+              </h2>
               <div class="text-sm opacity-70 space-y-1">
                 <FormattedDate date={pubDate} />
                 {
@@ -70,7 +73,7 @@ const {
                       class="btn btn-sm btn-outline"
                       aria-label="View on GitHub"
                     >
-                      GitHub
+                      GitHub Source
                     </a>
                   )
                 }
@@ -80,10 +83,10 @@ const {
                       href={mainLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="btn btn-sm btn-primary"
+                      class="btn btn-sm btn-outline"
                       aria-label="Open main site"
                     >
-                      Visit site
+                      Live Demo
                     </a>
                   )
                 }
