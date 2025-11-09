@@ -3,6 +3,7 @@ title: "Video Supercut: Automatic Cuts From Speech With Whisper"
 description: "A Python tool that extracts audio, detects speech, transcribes, removes repeats, and renders a concise edit"
 pubDate: "Feb 20 2025"
 heroImage: "../../assets/python.png"
+github: "https://github.com/justinkahrs/video-supercut"
 ---
 
 Cutting dead air and repeated phrases by hand is slow. This project automates the boring parts. Point it at a folder of videos, and it will:

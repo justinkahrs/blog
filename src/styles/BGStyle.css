@@ -1,3 +1,15 @@
+:root {
+  /* --background: #13a93e; */
+  /* --foreground: #171717; */
+  --gradient-a: #000000;
+  --gradient-b: #292b2a;
+}
+body {
+  /* background-color: var(--background); */
+  /* color: var(--foreground); */
+  min-height: 100%;
+}
+
 .site-bg-layer {
   position: fixed;
   inset: 0;

@@ -3,6 +3,8 @@ title: "RCS Tech Demo"
 description: ": Where we're going, we won't need apps"
 pubDate: "Apr 18 2025"
 heroImage: "../../assets/amastay.png"
+github: "https://github.com/justinkahrs/on-device-demo"
+mainLink: "https://demo.amastay.ai"
 ---
 
 # Amastay Demo Deep Dive

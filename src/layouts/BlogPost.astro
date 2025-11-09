@@ -9,14 +9,21 @@ import BackgroundAnimation from "../components/BackgroundAnimation.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  github,
+  mainLink,
+} = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
   </head>
-
   <body>
     <BackgroundAnimation />
     <Header />
@@ -50,6 +57,34 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
                     <div>
                       Last updated on <FormattedDate date={updatedDate} />
                     </div>
+                  )
+                }
+              </div>
+              <div class="flex flex-wrap gap-3 pt-2">
+                {
+                  github && (
+                    <a
+                      href={github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-sm btn-outline"
+                      aria-label="View on GitHub"
+                    >
+                      GitHub
+                    </a>
+                  )
+                }
+                {
+                  mainLink && (
+                    <a
+                      href={mainLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-sm btn-primary"
+                      aria-label="Open main site"
+                    >
+                      Visit site
+                    </a>
                   )
                 }
               </div>
