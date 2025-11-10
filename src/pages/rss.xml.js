@@ -65,7 +65,7 @@ export async function GET(context) {
                 : undefined;
     items.push({
       title: post.data.title,
-      description: SITE_DESCRIPTION || post.data.description,
+      description: post.data.description || SITE_DESCRIPTION,
       pubDate: post.data.pubDate,
       updatedDate: post.data.updatedDate,
       link: `/project/${post.id}/`,
