@@ -1,7 +1,6 @@
 import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
 import { parse as htmlParse } from "node-html-parser";
 import { getImage } from "astro:assets";
@@ -48,9 +47,6 @@ export async function GET(context) {
         }
       } catch {}
     }
-    const content = sanitizeHtml(html.toString(), {
-      allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-    });
     const type =
       heroAbs && heroAbs.toLowerCase().endsWith(".png")
         ? "image/png"
@@ -68,8 +64,7 @@ export async function GET(context) {
       description: post.data.description || SITE_DESCRIPTION,
       pubDate: post.data.pubDate,
       updatedDate: post.data.updatedDate,
-      link: `/project/${post.id}/`,
-      content,
+      link: `/projects/${post.id}/`,
       enclosure:
         heroAbs && type ? { url: heroAbs, length: 0, type } : undefined,
       customData: heroAbs
