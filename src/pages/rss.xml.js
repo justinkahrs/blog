@@ -83,5 +83,6 @@ export async function GET(context) {
     site: context.site,
     xmlns: { media: "http://search.yahoo.com/mrss/" },
     items,
+    stylesheet: '/pretty-feed-v3.xsl',
   });
 }
